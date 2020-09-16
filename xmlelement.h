@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
 namespace SAXML{
 
@@ -10,7 +11,7 @@ namespace SAXML{
 
 class XMLElement{
 public:
-    XMLElement(std::string& name, int depth);
+    XMLElement(std::string &name, int depth);
     ~XMLElement();
 
     std::string getName();
@@ -19,14 +20,20 @@ public:
     int size();
 
     std::string getAttribute(int index);
-    bool setAttribute(int index, std::string& attribute);
+    bool setAttribute(int index, std::string &attribute);
+
+    std::string* getRef(int index);
+    std::string* getRef(std::string &attribute);
+    std::string* getRef(const std::string &attribute);
 
     std::string getValue(int index);
-    std::string getValue(std::string& attribute);
-    bool setValue(int index, std::string& value);
-    bool setValue(std::string& attribute, std::string& value);
+    std::string getValue(std::string &attribute);
+    std::string getValue(const std::string &attribute);
+    bool setValue(int index, std::string &value);
+    bool setValue(std::string &attribute, std::string &value);
+    bool setValue(const std::string &attribute, std::string &value);
 
-    bool appendAttribute(std::string& attribute, std::string& value);
+    bool appendAttribute(std::string &attribute, std::string &value);
     bool removeAttribute(int index);
 
 private:
